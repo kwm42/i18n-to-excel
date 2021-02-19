@@ -139,12 +139,6 @@ module.exports = {
     txt_008: '试试用百度搜索',
     txt_009: '切换百度搜索'
   },
-  audioItem: {
-    hot: 'audio-container__hot-cn',
-    boutique: 'audio-container__boutique-cn',
-    feature: 'audio-container__feature-cn',
-    news: 'audio-container__new-cn'
-  },
   noSelectChapter: {
     txt_001: '请选择章节',
     txt_002: '以便我们更精确地为您推荐教育资源',

@@ -35,13 +35,6 @@ module.exports = {
     newExercisesTxt: 'يمكنك إنشاء ممارسة مستقلة من خلال القوالب التي نقدمها ، في محاولة لإعداد الدروس بسهولة',
     addToCart: 'الانضمام إلى عربة التسوق'
   },
-  className: {
-    hot: 'frameB-com-list__img-hot',
-    boutique: 'frameB-com-list__img-boutique',
-    feature: 'frameB-com-list__img-feature',
-    news: 'frameB-com-list__img-new',
-    hard: 'icon-hard'
-  },
   feature: {
   },
   courseware: {
@@ -144,12 +137,6 @@ module.exports = {
     txt_007: 'موارد عالية الجودة لك',
     txt_008: 'Baidu بحث',
     txt_009: 'Baidu'
-  },
-  audioItem: {
-    hot: 'audio-container__hot',
-    boutique: 'audio-container__boutique',
-    feature: 'audio-container__feature',
-    news: 'audio-container__new'
   },
   noSelectChapter: {
     txt_001: 'الرجاء تحديد فصل',

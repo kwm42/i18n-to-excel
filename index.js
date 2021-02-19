@@ -2,6 +2,7 @@ const XLSX = require('xlsx')
 const fs = require('fs')
 const path = require('path')
 const cloneDeep = require('lodash.clonedeep')
+const xml2js = require('xml2js')
 
 let tempKeyMappingObj = {}
 const targetTranslationObjs = []
@@ -30,7 +31,37 @@ const getFilesByPath = (path) => {
   exportToFiles('exports')
 }
 
-const parseTranslationJSONFile = (filePath, filename) => {
+const exportXmlFile = (data, filename, language) => {
+  const xmlBuilder = new xml2js.Builder()
+  const xml = xmlBuilder.buildObject(data)
+  const path = `./xmls/${language ? language + '/' : ''}${filename}.xml`
+  fs.writeFileSync(path, xml)
+}
+
+const translateJsonToXml = (data, filename, language) => {
+  const keys = Object.keys(data)
+  const xmlData = keys.map(key => ({
+    _: data[key],
+    $: {
+      name: key
+    }
+  }))
+  const xmlJSON = {
+    resources: {
+      string: xmlData
+    }
+  }
+  exportXmlFile(xmlJSON, filename, language)
+}
+
+const translateJsonsToXmls = (languages, filename) => {
+  const keys = Object.keys(languages)
+  keys.forEach(key => {
+    translateJsonToXml(languages[key], filename, key)
+  })
+}
+
+const parseTranslationJSONFile = (filePath, filepath) => {
   // const content = fs.readFileSync(filePath, 'utf-8')
   const dirPath = path.dirname(filePath)
   const baseName = path.basename(filePath)
@@ -44,17 +75,44 @@ const parseTranslationJSONFile = (filePath, filename) => {
   const flatternedContentHk = flatternObject(contentHk)
   const flatternedContentAr = flatternObject(contentAr)
 
+  const filename = path.basename(filepath, path.extname(filepath))
+  translateJsonsToXmls({
+    zh: flatternedContentZh,
+    en: flatternedContentEn,
+    hk: flatternedContentHk,
+    ar: flatternedContentAr
+  }, filename)
+
   const mergedLanguageData = mergeMultiLanguages(flatternedContentZh, flatternedContentEn, flatternedContentHk, flatternedContentAr)
   targetTranslationObjs.push(Object.assign({}, {
     value: mergedLanguageData
   }, {
-    filename: path.basename(filename, path.extname(filename))
+    filename
   }))
-  // targetTranslationObjs.push(Object.assign({}, {
-  //   value: tempKeyMappingObj
-  // }, {
-  //   filename: path.basename(filename, path.extname(filename))
-  // }))
+}
+
+const xmlTest = () => {
+  const xmlData = fs.readFileSync('./sample.xml')
+  const xmlParser = new xml2js.Parser()
+  const xmlBuilder = new xml2js.Builder()
+  xmlParser.parseString(xmlData, function(err, result) {
+    // logToConsole(result)
+  })
+  const xmlJSON = {
+    resources: {
+      string: [
+        {
+          _: '1111',
+          $: {
+            name: 'as'
+          }
+        }
+      ]
+    }
+  }
+  const xml = xmlBuilder.buildObject(xmlJSON)
+  logToConsole(xml)
+  fs.writeFileSync('./exportXml.xml', xml)
 }
 
 const mergeMultiLanguages = (contentZh, contentEn, contentHk, contentAr) => {

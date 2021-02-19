@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resources>
+  <string name="lang_en">english</string>
+  <string name="lang_zh-CN">chinese</string>
+  <string name="lang_zh-HK">chinese</string>
+  <string name="home">home</string>
+  <string name="articleTitle">articleTitle</string>
+  <string name="articleContent">articleContent</string>
+  <string name="articleAdd">articleAdd</string>
+  <string name="articleAddSuccess">articleAddSuccess</string>
+  <string name="save">save</string>
+  <string name="startRandomCall">Pick Now</string>
+  <string name="selectRandomNumber">Please select a random number</string>
+  <string name="restartRandomCall">Pick again</string>
+  <string name="congratulation">Congratulations</string>
+  <string name="list">List</string>
+  <string name="wholeClass">class</string>
+  <string name="online">online</string>
+  <string name="noStudents">No student info. Return to the previous page.</string>
+  <string name="disableTip">The number of people randomly selected is greater than the number of people in {scope}</string>
+</resources>

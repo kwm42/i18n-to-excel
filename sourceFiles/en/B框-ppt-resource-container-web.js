@@ -35,13 +35,6 @@ module.exports = {
     newExercisesTxt: 'You can create your own exercises through the template we provide, and try to prepare lessons easily',
     addToCart: 'Add to cart'
   },
-  className: {
-    hot: 'frameB-com-list__img-hot',
-    boutique: 'frameB-com-list__img-boutique',
-    feature: 'frameB-com-list__img-feature',
-    news: 'frameB-com-list__img-new',
-    hard: 'icon-hard'
-  },
   feature: {
   },
   courseware: {
@@ -144,12 +137,6 @@ module.exports = {
     txt_007: 'High quality resources for you',
     txt_008: 'Search with Baidu',
     txt_009: 'Baidu'
-  },
-  audioItem: {
-    hot: 'audio-container__hot',
-    boutique: 'audio-container__boutique',
-    feature: 'audio-container__feature',
-    news: 'audio-container__new'
   },
   noSelectChapter: {
     txt_001: 'Please select a chapter',
