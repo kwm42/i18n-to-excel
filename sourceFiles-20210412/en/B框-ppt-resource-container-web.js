@@ -33,7 +33,16 @@ module.exports = {
     '9': 'Chemistry',
     newExercises: 'New exercise',
     newExercisesTxt: 'You can create your own exercises through the template we provide, and try to prepare lessons easily',
-    addToCart: 'Add to cart'
+    addToCart: 'Add to cart',
+    resourceNotFound: 'The resource was not found',
+    previewNotSupported: 'This resource needs to be paid before previewing~'
+  },
+  className: {
+    hot: 'frameB-com-list__img-hot',
+    boutique: 'frameB-com-list__img-boutique',
+    feature: 'frameB-com-list__img-feature',
+    news: 'frameB-com-list__img-new',
+    hard: 'icon-hard'
   },
   feature: {
   },
@@ -138,6 +147,12 @@ module.exports = {
     txt_008: 'Search with Baidu',
     txt_009: 'Baidu'
   },
+  audioItem: {
+    hot: 'audio-container__hot',
+    boutique: 'audio-container__boutique',
+    feature: 'audio-container__feature',
+    news: 'audio-container__new'
+  },
   noSelectChapter: {
     txt_001: 'Please select a chapter',
     txt_002: 'So that we can recommend better teaching materials for you',
@@ -188,6 +203,8 @@ module.exports = {
     type: 'Category',
     interactive: 'Activities',
     exclusive_video: 'Disney Authorized Videos',
+    authorize_video: 'English video',
+    skin_center: 'Skin Center',
     video: 'Videos',
     visitAll: 'View All',
     visitMore: 'View More',
@@ -201,15 +218,34 @@ module.exports = {
     login_notify: 'Log in to use Disney resources.',
     no_login: 'You are not logged in.',
     more_skin: 'More Skins',
+    more_theme: 'More',
     not_find: 'No results found.',
     you_can_try: 'You can try different types of resources.',
     search_placeholder: 'Enter keywords',
+    ipzone_placeholder: 'Search for resources you want',
     questions: 'basic exercises',
     questions_interactive: 'interesting exercises',
-    questions_template: 'exercises template',
+    questions_template: 'Exercises',
     confirm: 'OK',
     tips: 'tips',
-    tips_desc: 'you are using a version that is too low. Please upgrade the version before using!'
+    tips_desc: 'Your version is too old to insert the latest resources. Go to update and experience it~',
+    update_now: 'Update now',
+    encourage_desc: 'You can experience it in: Show > Interactive Tools > praise and encouragement > praise tool',
+    team_competition: 'Team Competition',
+    random_rollcall: 'Random Roll Call',
+    class_encourage: 'Classroom Encouragement',
+    disneyResponder: 'Answer Tool',
+    encourage: 'Encouragement',
+    responder: 'Answer',
+    fl_remark: 'Avengers invite you to team up~',
+    ml_remark: 'Khan big spot soldier ~ smoke student classroom interaction!',
+    bx_remark: 'Show > Interactive Tools > praise',
+    mq_remark: 'Join race car driver Mickey in the contest~',
+    use_now: 'Use it now',
+    login_use: 'Please log in',
+    resource: 'Resource Type',
+    current: 'Current',
+    ipzone: 'Disney Zone'
   },
   ads: {
     not_remind: 'No remind'
@@ -250,5 +286,16 @@ module.exports = {
     physical3d: '3D Virtual Lab',
     tools: 'tools',
     physical: 'physical'
+  },
+  authorWorks: {
+    activity_homepage: 'home',
+    my_works: 'My entries',
+    my_selected_works: 'Selected works',
+    selected_works: 'selected',
+    award_works: 'prize',
+    praise: 'praise',
+    used: 'used',
+    no_more: 'no more',
+    take_part_in: 'Join the competition of collecting works and build a teaching resource library'
   }
 }

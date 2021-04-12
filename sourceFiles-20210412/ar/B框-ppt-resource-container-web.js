@@ -33,7 +33,16 @@ module.exports = {
     '9': 'كيميائى',
     newExercises: 'تمارين جديدة',
     newExercisesTxt: 'يمكنك إنشاء ممارسة مستقلة من خلال القوالب التي نقدمها ، في محاولة لإعداد الدروس بسهولة',
-    addToCart: 'الانضمام إلى عربة التسوق'
+    addToCart: 'الانضمام إلى عربة التسوق',
+    resourceNotFound: 'لم يتم العثور على المورد',
+    previewNotSupported: 'يجب دفع هذا المورد قبل معاينة ~'
+  },
+  className: {
+    hot: 'frameB-com-list__img-hot',
+    boutique: 'frameB-com-list__img-boutique',
+    feature: 'frameB-com-list__img-feature',
+    news: 'frameB-com-list__img-new',
+    hard: 'icon-hard'
   },
   feature: {
   },
@@ -138,6 +147,12 @@ module.exports = {
     txt_008: 'Baidu بحث',
     txt_009: 'Baidu'
   },
+  audioItem: {
+    hot: 'audio-container__hot',
+    boutique: 'audio-container__boutique',
+    feature: 'audio-container__feature',
+    news: 'audio-container__new'
+  },
   noSelectChapter: {
     txt_001: 'الرجاء تحديد فصل',
     txt_002: 'حتى يمكننا التوصية بمواد تعليمية أفضل لك',
@@ -188,6 +203,8 @@ module.exports = {
     type: 'الفئة',
     interactive: 'الأنشطة',
     exclusive_video: 'فيديوهات ديزني المعتمدة',
+    authorize_video: 'فيديو عربي',
+    skin_center: 'مركز الجلد',
     video: 'مقاطع الفيديو',
     visitAll: 'عرض الجميع',
     visitMore: 'عرض المزيد',
@@ -201,15 +218,34 @@ module.exports = {
     login_notify: 'تسجيل الدخول لاستخدام موارد ديزني.',
     no_login: 'لم يتم تسجيل دخولك.',
     more_skin: 'مزيد من الأسطح',
+    more_theme: 'المزيد من المواضيع',
     not_find: 'لم يتم العثور على نتائج.',
     you_can_try: 'يمكنك تجربة أنواع مختلفة من الموارد.',
     search_placeholder: 'إدخال الكلمات الرئيسية',
+    ipzone_placeholder: 'البحث عن الموارد التي تريد',
     questions: 'التمارين الأساسية',
     questions_interactive: 'تمارين مثيرة للاهتمام',
     questions_template: 'نموذج التمرين',
     confirm: 'موافق',
     tips: 'نصائح',
-    tips_desc: 'أنت تستخدم إصدارًا منخفضًا جدًا. يُرجى ترقية الإصدار قبل استخدامه!'
+    tips_desc: 'أنت تستخدم إصدارًا منخفضًا جدًا. يُرجى ترقية الإصدار قبل استخدامه!',
+    update_now: 'تحديث فوري',
+    encourage_desc: 'يمكنك تجربة مع أدوات تفاعلية في حالة العرض',
+    team_competition: 'فريق المنافسة',
+    random_rollcall: 'اسم عشوائي',
+    class_encourage: 'تشجيع الفصول الدراسية',
+    disneyResponder: 'أداة الرد',
+    encourage: 'شجع',
+    responder: 'الرد السريع',
+    fl_remark: 'دوري المنتقمون يدعوك إلى تنظيم المسابقة',
+    ml_remark: 'ما هو نوع من التفاعل الصفي ؟',
+    bx_remark: 'أداة تفاعلية في حالة العرض',
+    mq_remark: 'مع ميكي ، متسابق',
+    use_now: 'استخدام فوري',
+    login_use: 'بعد تسجيل الدخول يمكنك استخدام',
+    resource: 'أنواع الموارد',
+    current: 'حالي',
+    ipzone: 'ديزني لاند'
   },
   ads: {
     not_remind: 'ا أذكر '
@@ -250,5 +286,16 @@ module.exports = {
     physical3d: 'المختبر الافتراضي ثلاثي الأبعاد',
     tools: 'تولز',
     physical: 'فيزيائي'
+  },
+  authorWorks: {
+    activity_homepage: 'الصفحة الرئيسية النشطة',
+    my_works: 'بلدي يعمل',
+    my_selected_works: 'بلدي مجموعة مختارة',
+    selected_works: 'أعمال مختارة',
+    award_works: 'الحائز على جائزة العمل',
+    praise: 'حصاد الحمد',
+    used: 'تستخدم',
+    no_more: 'لا أكثر',
+    take_part_in: 'الانضمام إلى مسابقة جمع الأعمال ، وبناء قاعدة بيانات الموارد التعليمية'
   }
 }

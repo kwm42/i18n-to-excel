@@ -33,7 +33,9 @@ module.exports = {
     '9': '化学',
     newExercises: '新建习题',
     newExercisesTxt: '您可以通过我们提供的模板自主创建习题，来试试轻松备课吧',
-    addToCart: '加入购物车'
+    addToCart: '加入购物车',
+    resourceNotFound: '没有查询到该资源',
+    previewNotSupported: '该资源需要付费后才能预览哦~'
   },
   feature: {
   },
@@ -189,6 +191,8 @@ module.exports = {
     type: '类别',
     interactive: '课堂活动',
     exclusive_video: '迪士尼授权专属视频',
+    authorize_video: '英语视频',
+    skin_center: '皮肤中心',
     video: '视频',
     visitAll: '查看全部',
     visitMore: '查看更多',
@@ -202,15 +206,34 @@ module.exports = {
     login_notify: '提示：迪士尼专区资源，需登录后使用',
     no_login: '您当前还没有登录',
     more_skin: '更多皮肤',
+    more_theme: '更多主题',
     not_find: '目前没有找到你要的资源',
     you_can_try: '你可以试试其他类型的资源；',
     search_placeholder: '海量资源等你来搜',
+    ipzone_placeholder: '搜索你想要的资源',
     questions: '基础习题',
     questions_interactive: '趣味习题',
     questions_template: '习题模板',
     confirm: '确定',
-    tips: '提示',
-    tips_desc: '由于您使用的版本太低，无法使用该工具。请升级版本后使用！'
+    tips: '温馨提示',
+    tips_desc: '您的版本过旧，无法插入最新资源，快去更新后体验吧~',
+    update_now: '立即更新',
+    encourage_desc: '您可以在：放映态下 > 互动工具 > 表扬鼓励 > 表扬工具 中进行体验',
+    team_competition: '团队竞赛',
+    random_rollcall: '随机点名',
+    class_encourage: '课堂鼓励',
+    disneyResponder: '抢答工具',
+    encourage: '鼓励',
+    responder: '抢答',
+    fl_remark: '复仇者联盟邀你组队竞赛啦~',
+    ml_remark: '可汗大点兵~抽学生课堂互动！',
+    bx_remark: '放映态下>互动工具>表扬',
+    mq_remark: '与赛车手米奇一起抢答吧~',
+    use_now: '立即使用',
+    login_use: '登录后即可使用',
+    resource: '资源类型',
+    current: '当前',
+    ipzone: '迪士尼专区'
   },
   ads: {
     not_remind: '不再提醒'
@@ -245,11 +268,22 @@ module.exports = {
     experience: '实验',
     media: '多媒体',
     threeD: '3D资源',
-    exercise: '试卷',
+    exercise: '习题/试卷',
     theme: '主题',
     physicalvideo: '实验视频',
     physical3d: '3D虚拟实验室',
     tools: '工具',
     physical: '物理'
+  },
+  authorWorks: {
+    activity_homepage: '活动首页',
+    my_works: '我的参赛作品',
+    my_selected_works: '我的入选作品集',
+    selected_works: '入选作品',
+    award_works: '获奖作品',
+    praise: '收获赞',
+    used: '被使用',
+    no_more: '没有更多了',
+    take_part_in: '加入作品征集大赛，共建教学资源库'
   }
 }

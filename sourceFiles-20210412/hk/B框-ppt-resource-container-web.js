@@ -33,7 +33,9 @@ module.exports = {
     '9': '化學',
     newExercises: '新建習題',
     newExercisesTxt: '您可以通過我們提供的模板自主創建習題，來試試輕鬆備課吧',
-    addToCart: '加入購物車'
+    addToCart: '加入購物車',
+    resourceNotFound: '沒有查詢到該資源',
+    previewNotSupported: '該資源需要付費後才能預覽哦~'
   },
   className: {
     hot: 'frameB-com-list__img-hot',
@@ -145,6 +147,12 @@ module.exports = {
     txt_008: '试试用百度搜索',
     txt_009: '切换百度搜索'
   },
+  audioItem: {
+    hot: 'audio-container__hot',
+    boutique: 'audio-container__boutique',
+    feature: 'audio-container__feature',
+    news: 'audio-container__new'
+  },
   noSelectChapter: {
     txt_001: '請選擇章節',
     txt_002: '以便我們更精準地為您推薦教育資源',
@@ -195,6 +203,8 @@ module.exports = {
     type: '類別',
     interactive: '課堂活動',
     exclusive_video: '迪士尼授權專屬視頻',
+    authorize_video: '英語視頻',
+    skin_center: '皮膚中心',
     video: '視頻',
     visitAll: '查看全部',
     visitMore: '查看更多',
@@ -208,15 +218,34 @@ module.exports = {
     login_notify: '提示：迪士尼專區資源，需登入後使用',
     no_login: '您當前還沒有登錄',
     more_skin: '更多皮膚',
+    more_theme: '更多主題',
     not_find: '現時沒有找到你要的資源',
     you_can_try: '你可以試試其他類型的資源；',
     search_placeholder: '海量資源等你來搜',
+    ipzone_placeholder: '搜索你想要的資源',
     questions: '基礎習題',
     questions_interactive: '趣味習題',
     questions_template: '习题模板',
     confirm: '確定',
-    tips: '提示',
-    tips_desc: '由於您使用的版本太低，無法使用該工具。請升級版本後使用！'
+    tips: '溫馨提示',
+    tips_desc: '您的版本過舊，無法插入最新資源，快去更新後體驗吧~',
+    update_now: '立即更新',
+    encourage_desc: '您可以在：放映態下 > 互動工具 > 表揚鼓勵 > 表揚工具 中進行體驗',
+    team_competition: '團隊競賽',
+    random_rollcall: '隨機點名',
+    class_encourage: '課堂鼓勵',
+    disneyResponder: '搶答工具',
+    encourage: '鼓勵',
+    responder: '搶答',
+    fl_remark: '復仇者聯盟邀妳組隊競賽啦~',
+    ml_remark: '可汗大點兵~抽學生課堂互動！',
+    bx_remark: '放映態下>互動工具>表揚',
+    mq_remark: '與賽車手米奇壹起搶答吧~',
+    use_now: '立即使用',
+    login_use: '登錄後即可使用',
+    resource: '資源類型',
+    current: '當前',
+    ipzone: '迪士尼專區'
   },
   ads: {
     not_remind: '不再提醒'
@@ -256,5 +285,16 @@ module.exports = {
     physical3d: '3D虛擬實驗室',
     tools: '工具',
     physical: '物理'
+  },
+  authorWorks: {
+    activity_homepage: '活動首頁',
+    my_works: '我的參賽作品',
+    my_selected_works: '我的入選作品集',
+    selected_works: '入選作品',
+    award_works: '獲獎作品',
+    praise: '收穫贊',
+    used: '被使用',
+    no_more: '沒有更多了',
+    take_part_in: '加入作品徵集大賽，共建教學資源庫'
   }
 }

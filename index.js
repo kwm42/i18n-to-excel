@@ -35,6 +35,9 @@ const getFilesByPath = (filepath) => {
     const oldData = parseTranslationJSONFile(`${filepath}/${file}`, file)
     const newData = parseTranslationJSONFile(`${filepath + '-new'}/${file}`, file)
     const diffSet = diffObjs(oldData, newData)
+    if (Object.keys(diffSet.zh).length === 0) {
+      return
+    }
     const filename = path.basename(file, path.extname(file))
     // xml 文件
     // translateJsonsToXmls(diffSet, filename)
@@ -229,7 +232,7 @@ const exportToFiles = (targetDir) => {
     // let exportFileName = `./workbook_${i}.xls`;
     XLSX.writeFile(wb, exportFileName)
   })
-  XLSX.writeFile(wholeWorkBook, `./${targetDir}/全部翻译.xlsx`)
+  XLSX.writeFile(wholeWorkBook, `./${targetDir}/all.xlsx`)
 }
 
 const main = () => {
