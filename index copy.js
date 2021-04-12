@@ -7,7 +7,6 @@ const xml2js = require('xml2js')
 const fetch = require('node-fetch');
 const {pipeline} = require('stream');
 const {promisify} = require('util');
-const utils = require('./utils.js')
 
 let tempKeyMappingObj = {}
 const targetTranslationObjs = []
@@ -26,50 +25,15 @@ const checkIsDirectory = (dirPath) => {
   }
 }
 
-const getFilesByPath = (filepath) => {
-  const filesDir = fs.readdirSync(filepath)
+const getFilesByPath = (path) => {
+  const filesDir = fs.readdirSync(path)
   filesDir.forEach(file => {
-    if (checkIsDirectory(`${filepath}/${file}`)) {
+    if (checkIsDirectory(`${path}/${file}`)) {
       return
     }
-    const oldData = parseTranslationJSONFile(`${filepath}/${file}`, file)
-    const newData = parseTranslationJSONFile(`${filepath + '-new'}/${file}`, file)
-    const diffSet = diffObjs(oldData, newData)
-    const filename = path.basename(file, path.extname(file))
-    // xml 文件
-    // translateJsonsToXmls(diffSet, filename)
-
-    const mergedLanguageData = mergeMultiLanguages(diffSet.zh, diffSet.en, diffSet.hk, diffSet.ar)
-    targetTranslationObjs.push(Object.assign({}, {
-      value: mergedLanguageData
-    }, {
-      filename
-    }))
+    parseTranslationJSONFile(`${path}/${file}`, file)
   })
   exportToFiles('exports')
-}
-
-const diffObjs = (oldData, newData) => {
-  const oldZhData = oldData.zh
-  const newZhData = newData.zh
-  const diffZh = utils.getDifferentSet(newZhData, oldZhData)
-  const diffEn = generateDiffDataBasedOnZh(diffZh, newData.en)
-  const diffHk = generateDiffDataBasedOnZh(diffZh, newData.hk)
-  const diffAr = generateDiffDataBasedOnZh(diffZh, newData.ar)
-  return {
-    zh: diffZh,
-    en: diffEn,
-    hk: diffHk,
-    ar: diffAr
-  }
-}
-
-const generateDiffDataBasedOnZh = (zh, data) => {
-  var result = {}
-  Object.keys(zh).forEach(key => {
-    result[key] = data[key] || ''
-  })
-  return result
 }
 
 const exportXmlFile = (data, filename, language) => {
@@ -115,27 +79,21 @@ const parseTranslationJSONFile = (filePath, filepath) => {
   const flatternedContentEn = flatternObject(contentEn)
   const flatternedContentHk = flatternObject(contentHk)
   const flatternedContentAr = flatternObject(contentAr)
-  return {
+
+  const filename = path.basename(filepath, path.extname(filepath))
+  translateJsonsToXmls({
     zh: flatternedContentZh,
     en: flatternedContentEn,
     hk: flatternedContentHk,
     ar: flatternedContentAr
-  }
+  }, filename)
 
-  // const filename = path.basename(filepath, path.extname(filepath))
-  // translateJsonsToXmls({
-  //   zh: flatternedContentZh,
-  //   en: flatternedContentEn,
-  //   hk: flatternedContentHk,
-  //   ar: flatternedContentAr
-  // }, filename)
-
-  // const mergedLanguageData = mergeMultiLanguages(flatternedContentZh, flatternedContentEn, flatternedContentHk, flatternedContentAr)
-  // targetTranslationObjs.push(Object.assign({}, {
-  //   value: mergedLanguageData
-  // }, {
-  //   filename
-  // }))
+  const mergedLanguageData = mergeMultiLanguages(flatternedContentZh, flatternedContentEn, flatternedContentHk, flatternedContentAr)
+  targetTranslationObjs.push(Object.assign({}, {
+    value: mergedLanguageData
+  }, {
+    filename
+  }))
 }
 
 const xmlTest = () => {
@@ -225,15 +183,15 @@ const exportToFiles = (targetDir) => {
     let wb = XLSX.utils.book_new()
     XLSX.utils.book_append_sheet(wb, ws, "SheetJS")
     XLSX.utils.book_append_sheet(wholeWorkBook, ws, item.filename.slice(0, 31))
-    let exportFileName = `./${targetDir}/${item.filename}.xlsx`;
+    let exportFileName = `./${targetDir}/${item.filename}.xls`;
     // let exportFileName = `./workbook_${i}.xls`;
     XLSX.writeFile(wb, exportFileName)
   })
-  XLSX.writeFile(wholeWorkBook, `./${targetDir}/全部翻译.xlsx`)
+  XLSX.writeFile(wholeWorkBook, `./${targetDir}/全部翻译.xls`)
 }
 
 const main = () => {
-  getFilesByPath('./sourceFiles')
+  // getFilesByPath('./sourceFiles')
 }
 
 main()
