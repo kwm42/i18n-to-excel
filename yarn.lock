@@ -4,65 +4,157 @@
 
 adler-32@~1.2.0:
   version "1.2.0"
-  resolved "https://registry.npm.taobao.org/adler-32/download/adler-32-1.2.0.tgz#6a3e6bf0a63900ba15652808cb15c6813d1a5f25"
+  resolved "http://registry.npm.sdp.nd/adler-32/download/adler-32-1.2.0.tgz#6a3e6bf0a63900ba15652808cb15c6813d1a5f25"
   integrity sha1-aj5r8KY5ALoVZSgIyxXGgT0aXyU=
   dependencies:
     exit-on-epipe "~1.0.1"
     printj "~1.1.0"
 
+ansi-regex@^5.0.0:
+  version "5.0.0"
+  resolved "http://registry.npm.sdp.nd/ansi-regex/download/ansi-regex-5.0.0.tgz#388539f55179bf39339c81af30a654d69f87cb75"
+  integrity sha1-OIU59VF5vzkznIGvMKZU1p+Hy3U=
+
+ansi-styles@^4.0.0:
+  version "4.3.0"
+  resolved "http://registry.npm.sdp.nd/ansi-styles/download/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
+  integrity sha1-7dgDYornHATIWuegkG7a00tkiTc=
+  dependencies:
+    color-convert "^2.0.1"
+
+at-least-node@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.sdp.nd/at-least-node/download/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
+  integrity sha1-YCzUtG6EStTv/JKoARo8RuAjjcI=
+
 cfb@^1.1.4:
   version "1.2.0"
-  resolved "https://registry.npm.taobao.org/cfb/download/cfb-1.2.0.tgz#6a4d0872b525ed60349e1ef51fb4b0bf73eca9a8"
+  resolved "http://registry.npm.sdp.nd/cfb/download/cfb-1.2.0.tgz#6a4d0872b525ed60349e1ef51fb4b0bf73eca9a8"
   integrity sha1-ak0IcrUl7WA0nh71H7Swv3Psqag=
   dependencies:
     adler-32 "~1.2.0"
     crc-32 "~1.2.0"
     printj "~1.1.2"
 
+cliui@^7.0.2:
+  version "7.0.4"
+  resolved "http://registry.npm.sdp.nd/cliui/download/cliui-7.0.4.tgz#a0265ee655476fc807aea9df3df8df7783808b4f"
+  integrity sha1-oCZe5lVHb8gHrqnfPfjfd4OAi08=
+  dependencies:
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    wrap-ansi "^7.0.0"
+
 codepage@~1.14.0:
   version "1.14.0"
-  resolved "https://registry.npm.taobao.org/codepage/download/codepage-1.14.0.tgz#8cbe25481323559d7d307571b0fff91e7a1d2f99"
+  resolved "http://registry.npm.sdp.nd/codepage/download/codepage-1.14.0.tgz#8cbe25481323559d7d307571b0fff91e7a1d2f99"
   integrity sha1-jL4lSBMjVZ19MHVxsP/5HnodL5k=
   dependencies:
     commander "~2.14.1"
     exit-on-epipe "~1.0.1"
 
+color-convert@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.sdp.nd/color-convert/download/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
+  integrity sha1-ctOmjVmMm9s68q0ehPIdiWq9TeM=
+  dependencies:
+    color-name "~1.1.4"
+
+color-name@~1.1.4:
+  version "1.1.4"
+  resolved "http://registry.npm.sdp.nd/color-name/download/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
+  integrity sha1-wqCah6y95pVD3m9j+jmVyCbFNqI=
+
 commander@~2.14.1:
   version "2.14.1"
-  resolved "https://registry.npm.taobao.org/commander/download/commander-2.14.1.tgz?cache=0&sync_timestamp=1610702145547&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-2.14.1.tgz#2235123e37af8ca3c65df45b026dbd357b01b9aa"
+  resolved "http://registry.npm.sdp.nd/commander/download/commander-2.14.1.tgz#2235123e37af8ca3c65df45b026dbd357b01b9aa"
   integrity sha1-IjUSPjevjKPGXfRbAm29NXsBuao=
 
 commander@~2.17.1:
   version "2.17.1"
-  resolved "https://registry.npm.taobao.org/commander/download/commander-2.17.1.tgz?cache=0&sync_timestamp=1610702145547&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
+  resolved "http://registry.npm.sdp.nd/commander/download/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha1-vXerfebelCBc6sxy8XFtKfIKd78=
 
 crc-32@~1.2.0:
   version "1.2.0"
-  resolved "https://registry.npm.taobao.org/crc-32/download/crc-32-1.2.0.tgz#cb2db6e29b88508e32d9dd0ec1693e7b41a18208"
+  resolved "http://registry.npm.sdp.nd/crc-32/download/crc-32-1.2.0.tgz#cb2db6e29b88508e32d9dd0ec1693e7b41a18208"
   integrity sha1-yy224puIUI4y2d0OwWk+e0Ghggg=
   dependencies:
     exit-on-epipe "~1.0.1"
     printj "~1.1.0"
 
+dateformat@^4.5.1:
+  version "4.5.1"
+  resolved "http://registry.npm.sdp.nd/dateformat/download/dateformat-4.5.1.tgz#c20e7a9ca77d147906b6dc2261a8be0a5bd2173c"
+  integrity sha1-wg56nKd9FHkGttwiYai+ClvSFzw=
+
+emoji-regex@^8.0.0:
+  version "8.0.0"
+  resolved "http://registry.npm.sdp.nd/emoji-regex/download/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
+  integrity sha1-6Bj9ac5cz8tARZT4QpY79TFkzDc=
+
+escalade@^3.1.1:
+  version "3.1.1"
+  resolved "http://registry.npm.sdp.nd/escalade/download/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
+  integrity sha1-2M/ccACWXFoBdLSoLqpcBVJ0LkA=
+
 exit-on-epipe@~1.0.1:
   version "1.0.1"
-  resolved "https://registry.npm.taobao.org/exit-on-epipe/download/exit-on-epipe-1.0.1.tgz#0bdd92e87d5285d267daa8171d0eb06159689692"
+  resolved "http://registry.npm.sdp.nd/exit-on-epipe/download/exit-on-epipe-1.0.1.tgz#0bdd92e87d5285d267daa8171d0eb06159689692"
   integrity sha1-C92S6H1ShdJn2qgXHQ6wYVlolpI=
 
 fflate@^0.3.8:
   version "0.3.11"
-  resolved "https://registry.npm.taobao.org/fflate/download/fflate-0.3.11.tgz?cache=0&sync_timestamp=1611345885783&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffflate%2Fdownload%2Ffflate-0.3.11.tgz#2c440d7180fdeb819e64898d8858af327b042a5d"
+  resolved "http://registry.npm.sdp.nd/fflate/download/fflate-0.3.11.tgz#2c440d7180fdeb819e64898d8858af327b042a5d"
   integrity sha1-LEQNcYD964GeZImNiFivMnsEKl0=
 
 frac@~1.1.2:
   version "1.1.2"
-  resolved "https://registry.npm.taobao.org/frac/download/frac-1.1.2.tgz#3d74f7f6478c88a1b5020306d747dc6313c74d0b"
+  resolved "http://registry.npm.sdp.nd/frac/download/frac-1.1.2.tgz#3d74f7f6478c88a1b5020306d747dc6313c74d0b"
   integrity sha1-PXT39keMiKG1AgMG10fcYxPHTQs=
+
+fs-extra@^9.1.0:
+  version "9.1.0"
+  resolved "http://registry.npm.sdp.nd/fs-extra/download/fs-extra-9.1.0.tgz#5954460c764a8da2094ba3554bf839e6b9a7c86d"
+  integrity sha1-WVRGDHZKjaIJS6NVS/g55rmnyG0=
+  dependencies:
+    at-least-node "^1.0.0"
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
+get-caller-file@^2.0.5:
+  version "2.0.5"
+  resolved "http://registry.npm.sdp.nd/get-caller-file/download/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
+  integrity sha1-T5RBKoLbMvNuOwuXQfipf+sDH34=
+
+graceful-fs@^4.1.6, graceful-fs@^4.2.0:
+  version "4.2.6"
+  resolved "http://registry.npm.sdp.nd/graceful-fs/download/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
+  integrity sha1-/wQLKwhTsjw9MQJ1I3BvGIXXa+4=
+
+inherits@^2.0.3:
+  version "2.0.4"
+  resolved "http://registry.npm.sdp.nd/inherits/download/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
+  integrity sha1-D6LGT5MpF8NDOg3tVTY6rjdBa3w=
+
+is-fullwidth-code-point@^3.0.0:
+  version "3.0.0"
+  resolved "http://registry.npm.sdp.nd/is-fullwidth-code-point/download/is-fullwidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
+  integrity sha1-8Rb4Bk/pCz94RKOJl8C3UFEmnx0=
+
+jsonfile@^6.0.1:
+  version "6.1.0"
+  resolved "http://registry.npm.sdp.nd/jsonfile/download/jsonfile-6.1.0.tgz#bc55b2634793c679ec6403094eb13698a6ec0aae"
+  integrity sha1-vFWyY0eTxnnsZAMJTrE2mKbsCq4=
+  dependencies:
+    universalify "^2.0.0"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
 
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
-  resolved "https://registry.npm.taobao.org/lodash.clonedeep/download/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  resolved "http://registry.npm.sdp.nd/lodash.clonedeep/download/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
 
 node-fetch@^2.6.1:
@@ -72,8 +164,32 @@ node-fetch@^2.6.1:
 
 printj@~1.1.0, printj@~1.1.2:
   version "1.1.2"
-  resolved "https://registry.npm.taobao.org/printj/download/printj-1.1.2.tgz#d90deb2975a8b9f600fb3a1c94e3f4c53c78a222"
+  resolved "http://registry.npm.sdp.nd/printj/download/printj-1.1.2.tgz#d90deb2975a8b9f600fb3a1c94e3f4c53c78a222"
   integrity sha1-2Q3rKXWoufYA+zoclOP0xTx4oiI=
+
+promise-polyfill@^1.1.6:
+  version "1.1.6"
+  resolved "http://registry.npm.sdp.nd/promise-polyfill/download/promise-polyfill-1.1.6.tgz#cd04eff46f5c95c3a7d045591d79b5e3e01f12d7"
+  integrity sha1-zQTv9G9clcOn0EVZHXm14+AfEtc=
+
+readable-stream@^3.4.0:
+  version "3.6.0"
+  resolved "http://registry.npm.sdp.nd/readable-stream/download/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
+  integrity sha1-M3u9o63AcGvT4CRCaihtS0sskZg=
+  dependencies:
+    inherits "^2.0.3"
+    string_decoder "^1.1.1"
+    util-deprecate "^1.0.1"
+
+require-directory@^2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.sdp.nd/require-directory/download/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
+  integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
+
+safe-buffer@~5.2.0:
+  version "5.2.1"
+  resolved "http://registry.npm.sdp.nd/safe-buffer/download/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
+  integrity sha1-Hq+fqb2x/dTsdfWPnNtOa3gn7sY=
 
 sax@>=0.6.0:
   version "1.2.4"
@@ -82,24 +198,80 @@ sax@>=0.6.0:
 
 ssf@~0.11.2:
   version "0.11.2"
-  resolved "https://registry.npm.taobao.org/ssf/download/ssf-0.11.2.tgz#0b99698b237548d088fc43cdf2b70c1a7512c06c"
+  resolved "http://registry.npm.sdp.nd/ssf/download/ssf-0.11.2.tgz#0b99698b237548d088fc43cdf2b70c1a7512c06c"
   integrity sha1-C5lpiyN1SNCI/EPN8rcMGnUSwGw=
   dependencies:
     frac "~1.1.2"
 
+stream-to-string@^1.2.0:
+  version "1.2.0"
+  resolved "http://registry.npm.sdp.nd/stream-to-string/download/stream-to-string-1.2.0.tgz#3ca506a097ecbf78b0e0aee0b6fa5c4565412a15"
+  integrity sha1-PKUGoJfsv3iw4K7gtvpcRWVBKhU=
+  dependencies:
+    promise-polyfill "^1.1.6"
+
+string-to-stream@^3.0.1:
+  version "3.0.1"
+  resolved "http://registry.npm.sdp.nd/string-to-stream/download/string-to-stream-3.0.1.tgz#480e6fb4d5476d31cb2221f75307a5dcb6638a42"
+  integrity sha1-SA5vtNVHbTHLIiH3Uwel3LZjikI=
+  dependencies:
+    readable-stream "^3.4.0"
+
+string-width@^4.1.0, string-width@^4.2.0:
+  version "4.2.2"
+  resolved "http://registry.npm.sdp.nd/string-width/download/string-width-4.2.2.tgz#dafd4f9559a7585cfba529c6a0a4f73488ebd4c5"
+  integrity sha1-2v1PlVmnWFz7pSnGoKT3NIjr1MU=
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.0"
+
+string_decoder@^1.1.1:
+  version "1.3.0"
+  resolved "http://registry.npm.sdp.nd/string_decoder/download/string_decoder-1.3.0.tgz#42f114594a46cf1a8e30b0a84f56c78c3edac21e"
+  integrity sha1-QvEUWUpGzxqOMLCoT1bHjD7awh4=
+  dependencies:
+    safe-buffer "~5.2.0"
+
+strip-ansi@^6.0.0:
+  version "6.0.0"
+  resolved "http://registry.npm.sdp.nd/strip-ansi/download/strip-ansi-6.0.0.tgz#0b1571dd7669ccd4f3e06e14ef1eed26225ae532"
+  integrity sha1-CxVx3XZpzNTz4G4U7x7tJiJa5TI=
+  dependencies:
+    ansi-regex "^5.0.0"
+
+universalify@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.sdp.nd/universalify/download/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
+  integrity sha1-daSYTv7cSwiXXFrrc/Uw0C3yVxc=
+
+util-deprecate@^1.0.1:
+  version "1.0.2"
+  resolved "http://registry.npm.sdp.nd/util-deprecate/download/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
+  integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
+
 wmf@~1.0.1:
   version "1.0.2"
-  resolved "https://registry.npm.taobao.org/wmf/download/wmf-1.0.2.tgz#7d19d621071a08c2bdc6b7e688a9c435298cc2da"
+  resolved "http://registry.npm.sdp.nd/wmf/download/wmf-1.0.2.tgz#7d19d621071a08c2bdc6b7e688a9c435298cc2da"
   integrity sha1-fRnWIQcaCMK9xrfmiKnENSmMwto=
 
 word@~0.3.0:
   version "0.3.0"
-  resolved "https://registry.npm.taobao.org/word/download/word-0.3.0.tgz#8542157e4f8e849f4a363a288992d47612db9961"
+  resolved "http://registry.npm.sdp.nd/word/download/word-0.3.0.tgz#8542157e4f8e849f4a363a288992d47612db9961"
   integrity sha1-hUIVfk+OhJ9KNjooiZLUdhLbmWE=
+
+wrap-ansi@^7.0.0:
+  version "7.0.0"
+  resolved "http://registry.npm.sdp.nd/wrap-ansi/download/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha1-Z+FFz/UQpqaYS98RUpEdadLrnkM=
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
 
 xlsx@^0.16.9:
   version "0.16.9"
-  resolved "https://registry.npm.taobao.org/xlsx/download/xlsx-0.16.9.tgz?cache=0&sync_timestamp=1605857177269&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fxlsx%2Fdownload%2Fxlsx-0.16.9.tgz#dacd5bb46bda6dd3743940c9c3dc1e2171826256"
+  resolved "http://registry.npm.sdp.nd/xlsx/download/xlsx-0.16.9.tgz#dacd5bb46bda6dd3743940c9c3dc1e2171826256"
   integrity sha1-2s1btGvabdN0OUDJw9weIXGCYlY=
   dependencies:
     adler-32 "~1.2.0"
@@ -125,3 +297,26 @@ xmlbuilder@~11.0.0:
   version "11.0.1"
   resolved "http://registry.npm.sdp.nd/xmlbuilder/download/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
   integrity sha1-vpuuHIoEbnazESdyY0fQrXACvrM=
+
+y18n@^5.0.5:
+  version "5.0.6"
+  resolved "http://registry.npm.sdp.nd/y18n/download/y18n-5.0.6.tgz#8236b05cfc5af6a409f41326a4847c68989bb04f"
+  integrity sha1-gjawXPxa9qQJ9BMmpIR8aJibsE8=
+
+yargs-parser@^20.2.2:
+  version "20.2.7"
+  resolved "http://registry.npm.sdp.nd/yargs-parser/download/yargs-parser-20.2.7.tgz#61df85c113edfb5a7a4e36eb8aa60ef423cbc90a"
+  integrity sha1-Yd+FwRPt+1p6TjbriqYO9CPLyQo=
+
+yargs@^16.2.0:
+  version "16.2.0"
+  resolved "http://registry.npm.sdp.nd/yargs/download/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
+  integrity sha1-HIK/D2tqZur85+8w43b0mhJHf2Y=
+  dependencies:
+    cliui "^7.0.2"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.0"
+    y18n "^5.0.5"
+    yargs-parser "^20.2.2"

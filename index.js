@@ -1,69 +1,75 @@
 const XLSX = require('xlsx')
-const fs = require('fs')
+const fse = require('fs-extra')
 const {createWriteStream} = require('fs')
 const path = require('path')
-const cloneDeep = require('lodash.clonedeep')
 const xml2js = require('xml2js')
 const fetch = require('node-fetch');
 const {pipeline} = require('stream');
 const {promisify} = require('util');
-const utils = require('./utils.js')
+const { checkIsDirectory, flattenObject, getDifferentSet } = require('./utils.js')
+const yargs = require('yargs')
+const dateformat = require('dateformat')
+const config = require('./config')
+const { downloadI18nSourceFiles } = require('./download')
+const { sourceDirectoryPrefix, i18nSourceConfig } = config
 
-let tempKeyMappingObj = {}
-const targetTranslationObjs = []
-const streamPipeline = promisify(pipeline);
+const targetTranslationData = []
 
-const logToConsole = (obj) => {
-  console.log(JSON.stringify(obj, null, 2))
-}
+const getFilesByPath = (dirPath) => {
+  const lastDate = yargs.argv.lastDate
+  const nowDate = dateformat(new Date(), 'yyyymmdd')
+  i18nSourceConfig.forEach(cfg => {
+    let newData, oldData, resultData
+    newData = parseTranslationFileToJson(dirPath + nowDate, cfg.name + (cfg.ext || '.js'))
+    oldData = lastDate
+      ? parseTranslationFileToJson(dirPath + lastDate, cfg.name + (cfg.ext || '.js'))
+      : null
 
-const checkIsDirectory = (dirPath) => {
-  try {
-    const stat = fs.statSync(dirPath)
-    return stat.isDirectory()
-  } catch (error) {
-    return false
-  }
-}
-
-const getFilesByPath = (filepath) => {
-  const filesDir = fs.readdirSync(filepath)
-  filesDir.forEach(file => {
-    if (checkIsDirectory(`${filepath}/${file}`)) {
+    resultData = lastDate ? diffObjs(newData, oldData) : newData
+    if (Object.keys(resultData.zhCN).length === 0) {
       return
     }
-    const oldData = parseTranslationJSONFile(`${filepath}/${file}`, file)
-    const newData = parseTranslationJSONFile(`${filepath + '-new'}/${file}`, file)
-    const diffSet = diffObjs(oldData, newData)
-    if (Object.keys(diffSet.zh).length === 0) {
-      return
-    }
-    const filename = path.basename(file, path.extname(file))
-    // xml 文件
-    // translateJsonsToXmls(diffSet, filename)
+    const mergedLanguageData = mergeMultiLanguages(Object.keys(resultData).map(key => resultData[key]))
 
-    const mergedLanguageData = mergeMultiLanguages(diffSet.zh, diffSet.en, diffSet.hk, diffSet.ar)
-    targetTranslationObjs.push(Object.assign({}, {
+    targetTranslationData.push(Object.assign({}, {
       value: mergedLanguageData
     }, {
-      filename
+      filename: cfg.name
     }))
   })
-  exportToFiles('exports')
+
+  exportToFiles('./exports')
 }
 
-const diffObjs = (oldData, newData) => {
-  const oldZhData = oldData.zh
-  const newZhData = newData.zh
-  const diffZh = utils.getDifferentSet(newZhData, oldZhData)
-  const diffEn = generateDiffDataBasedOnZh(diffZh, newData.en)
-  const diffHk = generateDiffDataBasedOnZh(diffZh, newData.hk)
-  const diffAr = generateDiffDataBasedOnZh(diffZh, newData.ar)
+const exportToFiles = (targetDir) => {
+  fse.removeSync(targetDir)
+  fse.ensureDirSync(targetDir)
+  let wholeWorkBook = XLSX.utils.book_new()
+  targetTranslationData.forEach((item, i) => {
+    const array = item.value
+    array.unshift(['key', 'zh_CN', 'en_US', 'zh_HK', 'ar_SA'])
+    let ws = XLSX.utils.json_to_sheet(array, { skipHeader: true })
+    let wb = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb, ws, "SheetJS")
+    XLSX.utils.book_append_sheet(wholeWorkBook, ws, item.filename.slice(0, 31))
+    let exportFileName = `./${targetDir}/${item.filename}.xlsx`;
+    XLSX.writeFile(wb, exportFileName)
+  })
+  XLSX.writeFile(wholeWorkBook, `./${targetDir}/all.xlsx`)
+}
+
+const diffObjs = (newData, oldData) => {
+  const oldZhData = oldData.zhCN
+  const newZhData = newData.zhCN
+  const diffZh = getDifferentSet(newZhData, oldZhData)
+  const diffEn = generateDiffDataBasedOnZh(diffZh, newData.enUS)
+  const diffHk = generateDiffDataBasedOnZh(diffZh, newData.zhHK)
+  const diffAr = generateDiffDataBasedOnZh(diffZh, newData.arEG)
   return {
-    zh: diffZh,
-    en: diffEn,
-    hk: diffHk,
-    ar: diffAr
+    zhCN: diffZh,
+    enUS: diffEn,
+    zhHK: diffHk,
+    arEG: diffAr
   }
 }
 
@@ -75,117 +81,9 @@ const generateDiffDataBasedOnZh = (zh, data) => {
   return result
 }
 
-const exportXmlFile = (data, filename, language) => {
-  const xmlBuilder = new xml2js.Builder()
-  const xml = xmlBuilder.buildObject(data)
-  const path = `./xmls/${language ? language + '/' : ''}${filename}.xml`
-  fs.writeFileSync(path, xml)
-}
-
-const translateJsonToXml = (data, filename, language) => {
-  const keys = Object.keys(data)
-  const xmlData = keys.map(key => ({
-    _: data[key],
-    $: {
-      name: key
-    }
-  }))
-  const xmlJSON = {
-    resources: {
-      string: xmlData
-    }
-  }
-  exportXmlFile(xmlJSON, filename, language)
-}
-
-const translateJsonsToXmls = (languages, filename) => {
-  const keys = Object.keys(languages)
-  keys.forEach(key => {
-    translateJsonToXml(languages[key], filename, key)
-  })
-}
-
-const parseTranslationJSONFile = (filePath, filepath) => {
-  // const content = fs.readFileSync(filePath, 'utf-8')
-  const dirPath = path.dirname(filePath)
-  const baseName = path.basename(filePath)
-  const contentZh = require(`${dirPath}/${baseName}`)
-  const contentEn = require(`${dirPath}/en/${baseName}`)
-  const contentHk = require(`${dirPath}/hk/${baseName}`)
-  const contentAr = require(`${dirPath}/ar/${baseName}`)
-
-  const flatternedContentZh = flatternObject(contentZh)
-  const flatternedContentEn = flatternObject(contentEn)
-  const flatternedContentHk = flatternObject(contentHk)
-  const flatternedContentAr = flatternObject(contentAr)
-  return {
-    zh: flatternedContentZh,
-    en: flatternedContentEn,
-    hk: flatternedContentHk,
-    ar: flatternedContentAr
-  }
-
-  // const filename = path.basename(filepath, path.extname(filepath))
-  // translateJsonsToXmls({
-  //   zh: flatternedContentZh,
-  //   en: flatternedContentEn,
-  //   hk: flatternedContentHk,
-  //   ar: flatternedContentAr
-  // }, filename)
-
-  // const mergedLanguageData = mergeMultiLanguages(flatternedContentZh, flatternedContentEn, flatternedContentHk, flatternedContentAr)
-  // targetTranslationObjs.push(Object.assign({}, {
-  //   value: mergedLanguageData
-  // }, {
-  //   filename
-  // }))
-}
-
-const xmlTest = () => {
-  const xmlData = fs.readFileSync('./sample.xml')
-  const xmlParser = new xml2js.Parser()
-  const xmlBuilder = new xml2js.Builder()
-  xmlParser.parseString(xmlData, function(err, result) {
-    // logToConsole(result)
-  })
-  const xmlJSON = {
-    resources: {
-      string: [
-        {
-          _: '1111',
-          $: {
-            name: 'as'
-          }
-        }
-      ]
-    }
-  }
-  const xml = xmlBuilder.buildObject(xmlJSON)
-  logToConsole(xml)
-  fs.writeFileSync('./exportXml.xml', xml)
-}
-
-const mergeMultiLanguages = (contentZh, contentEn, contentHk, contentAr) => {
-  const translatedData = transformObjsToXlsxObj([contentZh, contentEn, contentHk, contentAr])
+const mergeMultiLanguages = (contents) => {
+  const translatedData = transformObjsToXlsxObj(contents)
   return translatedData
-}
-
-const flatternObject = (obj, keyPath) => {
-  tempKeyMappingObj = {}
-  return _flatternObject(obj, keyPath)
-}
-
-const _flatternObject = (obj, keyPath) => {
-  const keys = Object.keys(obj)
-  keys.forEach(key => {
-    const mappingKey = keyPath ? `${keyPath}.${key}` : key
-    if (typeof obj[key] === 'string') {
-      tempKeyMappingObj[mappingKey] = obj[key]
-    } else if (typeof obj[key] === 'object') {
-      _flatternObject(obj[key], mappingKey)
-    }
-  })
-  return cloneDeep(tempKeyMappingObj)
 }
 
 const transformObjsToXlsxObj = (objs) => {
@@ -202,41 +100,27 @@ const transformObjsToXlsxObj = (objs) => {
   return xlsxData
 }
 
-const transformObjArrayToXlsxObjArray = (objArray) => {
-  if (objArray.length === 0) {
-    return []
+const parseTranslationFileToJson = (dirPath, baseName) => {
+  const contentZh = require(`${dirPath}/zhCN/${baseName}`)
+  const contentEn = require(`${dirPath}/enUS/${baseName}`)
+  const contentHk = require(`${dirPath}/zhHK/${baseName}`)
+  const contentAr = require(`${dirPath}/arEG/${baseName}`)
+
+  const flattenedContentZh = flattenObject(contentZh)
+  const flattenedContentEn = flattenObject(contentEn)
+  const flattenedContentHk = flattenObject(contentHk)
+  const flattenedContentAr = flattenObject(contentAr)
+  return {
+    zhCN: flattenedContentZh,
+    enUS: flattenedContentEn,
+    zhHK: flattenedContentHk,
+    arEG: flattenedContentAr
   }
-  return objArray.map(obj => {
-    const data = []
-    const translationValue = obj.value || {}
-    Object.keys(translationValue).forEach(key => {
-      data.push([key, translationValue[key]])
-    })
-    return {
-      data,
-      name: obj.filename
-    }
-  })
 }
 
-const exportToFiles = (targetDir) => {
-  let wholeWorkBook = XLSX.utils.book_new()
-  targetTranslationObjs.forEach((item, i) => {
-    const array = item.value
-    array.unshift(['key', 'zh_CN', 'en_US', 'zh_HK', 'ar_SA'])
-    let ws = XLSX.utils.json_to_sheet(array, { skipHeader: true })
-    let wb = XLSX.utils.book_new()
-    XLSX.utils.book_append_sheet(wb, ws, "SheetJS")
-    XLSX.utils.book_append_sheet(wholeWorkBook, ws, item.filename.slice(0, 31))
-    let exportFileName = `./${targetDir}/${item.filename}.xlsx`;
-    // let exportFileName = `./workbook_${i}.xls`;
-    XLSX.writeFile(wb, exportFileName)
-  })
-  XLSX.writeFile(wholeWorkBook, `./${targetDir}/all.xlsx`)
-}
-
-const main = () => {
-  getFilesByPath('./sourceFiles')
+const main = async () => {
+  // await downloadI18nSourceFiles()
+  getFilesByPath(sourceDirectoryPrefix)
 }
 
 main()
